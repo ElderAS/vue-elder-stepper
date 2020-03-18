@@ -1,0 +1,40 @@
+{
+  "name": "vue-elder-stepper",
+  "version": "0.0.0-development",
+  "description": "Stepper component for vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests yet\"",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElderAS/vue-elder-stepper.git"
+  },
+  "keywords": [
+    "vue",
+    "stepper",
+    "component"
+  ],
+  "author": "car.jacobsen@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ElderAS/vue-elder-stepper/issues"
+  },
+  "homepage": "https://github.com/ElderAS/vue-elder-stepper#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "semantic-release-cli": "^5.2.3"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.1.0",
+    "semantic-release": "^17.0.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
