@@ -37,8 +37,11 @@
         v-for="item in value"
         v-show="active === item"
         :is="item.component"
-        :key="item.__uid"
-        v-bind="item.props || {}"
+        :key="item.id"
+        v-bind="{
+          ...(item.props || {}),
+          step: item,
+        }"
         v-on="{
           ...(item.listeners || {}),
           next,
