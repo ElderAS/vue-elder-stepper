@@ -47,7 +47,15 @@
           next,
           prev,
         }"
-      />
+      >
+        <slot :meta="meta" :item="item" :isActive="active.id === item.id" />
+        <slot
+          name="navigation"
+          :meta="meta"
+          :item="item"
+          :isActive="active.id === item.id"
+        />
+      </component>
     </div>
   </div>
 </template>
