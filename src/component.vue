@@ -35,7 +35,7 @@
     <div class="elder-stepper__component">
       <component
         v-for="item in value"
-        v-show="active === item"
+        v-show="active.id === item.id"
         :is="item.component"
         :key="item.id"
         v-bind="{
