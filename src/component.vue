@@ -48,13 +48,17 @@
           prev,
         }"
       >
-        <slot :meta="meta" :item="item" :isActive="active.id === item.id" />
-        <slot
-          name="navigation"
-          :meta="meta"
-          :item="item"
-          :isActive="active.id === item.id"
-        />
+        <template #default>
+          <slot :meta="meta" :item="item" :isActive="active.id === item.id" />
+        </template>
+        <template #navigation>
+          <slot
+            name="navigation"
+            :meta="meta"
+            :item="item"
+            :isActive="active.id === item.id"
+          />
+        </template>
       </component>
     </div>
   </div>
