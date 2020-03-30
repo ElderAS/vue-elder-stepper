@@ -49,14 +49,26 @@
         }"
       >
         <template #default>
-          <slot :meta="meta" :item="item" :isActive="active.id === item.id" />
+          <slot
+            v-bind="{
+              meta,
+              item,
+              next,
+              prev,
+              isActive: active.id === item.id,
+            }"
+          />
         </template>
         <template #navigation>
           <slot
             name="navigation"
-            :meta="meta"
-            :item="item"
-            :isActive="active.id === item.id"
+            v-bind="{
+              meta,
+              item,
+              next,
+              prev,
+              isActive: active.id === item.id,
+            }"
           />
         </template>
       </component>
