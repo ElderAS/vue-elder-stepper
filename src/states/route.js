@@ -9,9 +9,9 @@ class StateHandler {
   }
 
   set(id = this.get()) {
-    this.cp.active = this.cp.value.find(v => v.id === id)
+    this.cp.active = this.cp.value.find((v) => v.id === id)
 
-    if (this.get() !== id)
+    if (this.cp.$route.params[this.cp.stateKey] !== id)
       this.cp.$router.push({
         name: this.cp.$route.name,
         params: {
@@ -24,7 +24,7 @@ class StateHandler {
   initialize() {
     this.unwatchState = this.cp.$watch(
       `$route.params.${this.cp.stateKey}`,
-      value => this.set(value),
+      (value) => this.set(value),
       {
         immediate: true,
       },
