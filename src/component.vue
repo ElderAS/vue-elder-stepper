@@ -131,9 +131,9 @@ export default {
   },
   computed: {
     meta() {
-      let index = this.value.indexOf(this.active)
+      let index = this.value.findIndex((v) => v.id === this.active.id)
       return {
-        prev: index ? this.value[index - 1] : null,
+        prev: index > 0 ? this.value[index - 1] : null,
         active: this.active,
         next: index < this.value.length - 1 ? this.value[index + 1] : null,
       }
