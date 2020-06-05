@@ -32,6 +32,8 @@
       </template>
     </div>
 
+    <slot name="before" />
+
     <div class="elder-stepper__component">
       <component
         v-for="item in value"
