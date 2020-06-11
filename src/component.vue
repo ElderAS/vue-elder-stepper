@@ -43,6 +43,7 @@
         v-bind="{
           ...(item.props || {}),
           step: item,
+          isActive: active.id === item.id,
         }"
         v-on="{
           ...(item.listeners || {}),
