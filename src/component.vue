@@ -172,7 +172,7 @@ export default {
 .elder-stepper {
   &__breadcrumbs {
     $spacing: 0.5rem;
-    border-radius: var(--vue-elder-border-radius);
+    border-radius: GetVariable('border-radius');
     display: flex;
     align-items: center;
     background-color: white;
@@ -198,7 +198,7 @@ export default {
       &-icon {
         width: $size;
         height: $size;
-        background-color: rgba(var(--vue-elder-border-color), 0.6);
+        background-color: rgba(GetVariable('border-color'), 0.6);
         border-radius: 50%;
         font-size: 0.8em;
         font-weight: bold;
@@ -218,17 +218,17 @@ export default {
 
       &--active {
         .elder-stepper__breadcrumb-icon {
-          background-color: var(--vue-elder-primary) !important;
+          background-color: GetVariable('primary') !important;
           color: white;
         }
         .elder-stepper__breadcrumb-button {
-          color: var(--vue-elder-primary);
+          color: GetVariable('primary');
         }
       }
 
       &:hover {
         .elder-stepper__breadcrumb-icon {
-          background-color: rgba(var(--vue-elder-primary), 0.2);
+          background-color: rgba(GetVariable('primary'), 0.2);
         }
       }
     }
