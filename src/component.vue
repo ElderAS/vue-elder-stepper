@@ -163,12 +163,16 @@ export default {
 </script>
 
 <style lang="scss">
-.elder-stepper {
-  @import './variables.scss';
+@import './main.scss';
 
+:root {
+  @include GenerateVariables();
+}
+
+.elder-stepper {
   &__breadcrumbs {
     $spacing: 0.5rem;
-    border-radius: $border-radius;
+    border-radius: var(--vue-elder-border-radius);
     display: flex;
     align-items: center;
     background-color: white;
@@ -194,7 +198,7 @@ export default {
       &-icon {
         width: $size;
         height: $size;
-        background-color: rgba($border-color, 0.6);
+        background-color: rgba(var(--vue-elder-border-color), 0.6);
         border-radius: 50%;
         font-size: 0.8em;
         font-weight: bold;
@@ -214,17 +218,17 @@ export default {
 
       &--active {
         .elder-stepper__breadcrumb-icon {
-          background-color: $primary !important;
+          background-color: var(--vue-elder-primary) !important;
           color: white;
         }
         .elder-stepper__breadcrumb-button {
-          color: $primary;
+          color: var(--vue-elder-primary);
         }
       }
 
       &:hover {
         .elder-stepper__breadcrumb-icon {
-          background-color: rgba($primary, 0.2);
+          background-color: rgba(var(--vue-elder-primary), 0.2);
         }
       }
     }
