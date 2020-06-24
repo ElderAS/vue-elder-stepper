@@ -163,10 +163,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import './main.scss';
+$variables: (
+  'primary': #3a9acd,
+  'border-radius': 3px,
+);
 
-:root {
-  @include GenerateVariables();
+@function GetVariable($key) {
+  @return var(--vue-elder-#{$key}, map-get($variables, $key));
 }
 
 .elder-stepper {
