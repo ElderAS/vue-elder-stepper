@@ -172,22 +172,32 @@ export default {
 .elder-stepper {
   &__breadcrumbs {
     $spacing: 0.5rem;
-    border-radius: GetVariable('border-radius');
+
     display: flex;
     align-items: center;
-    background-color: white;
+
     padding: $spacing * 2;
+
+    border-radius: GetVariable('border-radius');
+    background-color: white;
 
     .elder-stepper__breadcrumb {
       $size: 24px;
+
       position: relative;
 
       &-button {
+        line-height: 1;
+
         display: flex;
         align-items: center;
+
         cursor: pointer;
-        line-height: 1;
         transition: color 150ms ease-out;
+
+        border: none;
+        outline: none;
+        background-color: transparent;
 
         span:last-child {
           position: relative;
@@ -196,30 +206,53 @@ export default {
       }
 
       &-icon {
-        width: $size;
-        height: $size;
-        background-color: rgba(GetVariable('border-color'), 0.6);
-        border-radius: 50%;
+        font-family: monospace;
         font-size: 0.8em;
         font-weight: bold;
-        margin-right: $spacing;
-        display: block;
-        text-align: center;
-        font-family: monospace;
         line-height: $size;
 
-        transition: background-color 150ms ease-out;
+        position: relative;
+        z-index: 1;
+
+        display: block;
+
+        width: $size;
+        height: $size;
+        margin-right: $spacing;
+
+        text-align: center;
+
+        &:before {
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+
+          width: 100%;
+          height: 100%;
+
+          content: '';
+          transition: background-color 150ms ease-out;
+
+          opacity: 0.2;
+          border-radius: 50%;
+          background-color: #bbb;
+        }
       }
 
       &-arrow {
         margin: 0 $spacing * 2;
+
         opacity: 0.3;
       }
 
       &--active {
         .elder-stepper__breadcrumb-icon {
-          background-color: GetVariable('primary') !important;
           color: white;
+          &:before {
+            opacity: 1;
+            background-color: GetVariable('primary');
+          }
         }
         .elder-stepper__breadcrumb-button {
           color: GetVariable('primary');
@@ -228,7 +261,11 @@ export default {
 
       &:hover {
         .elder-stepper__breadcrumb-icon {
-          background-color: rgba(GetVariable('primary'), 0.2);
+          position: relative;
+
+          &:before {
+            background-color: GetVariable('primary');
+          }
         }
       }
     }
