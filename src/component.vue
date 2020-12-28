@@ -12,15 +12,19 @@
           :key="index"
           class="elder-stepper__breadcrumb"
           :class="{ 'elder-stepper__breadcrumb--active': item.id === active.id }"
-          @click="state.set(item.id)"
         >
           <slot
             name="breadcrumb"
             :item="item"
             :is-active="item.id === active.id"
             :index="index"
+            :navigate="() => state.set(item.id)"
           >
-            <button type="button" class="elder-stepper__breadcrumb-button">
+            <button
+              type="button"
+              class="elder-stepper__breadcrumb-button"
+              @click="state.set(item.id)"
+            >
               <span class="elder-stepper__breadcrumb-icon">
                 <FontAwesomeIcon v-if="item.icon" :icon="item.icon" size="sm" />
                 <template v-else>{{ index + 1 }}</template>
