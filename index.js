@@ -2,15 +2,15 @@ import StepperComponent from './src/component.vue'
 
 const Options = {
   icons: {
-    breadcrumb: ['fas', 'long-arrow-alt-right'],
+    breadcrumb: ['fas', 'angle-right'],
   },
 }
 
-const install = Vue => {
+const install = (Vue) => {
   Vue.component('stepper-component', StepperComponent)
 }
 
-const setup = options => {
+const setup = (options) => {
   for (let key in options) {
     if (!(key in Options)) return
     Options[key] = options[key]

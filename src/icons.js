@@ -1,4 +1,4 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons/faLongArrowAltRight'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons/faAngleRight'
 
-library.add(faLongArrowAltRight)
+library.add(faAngleRight)

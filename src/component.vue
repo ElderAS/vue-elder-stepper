@@ -66,7 +66,7 @@
             }"
           />
         </template>
-        <template #navigation>
+        <template #navigation="scopedProps">
           <slot
             name="navigation"
             v-bind="{
@@ -75,6 +75,7 @@
               next,
               prev,
               isActive: active.id === item.id,
+              ...scopedProps,
             }"
           />
         </template>
@@ -176,20 +177,23 @@ $variables: (
   @return var(--vue-elder-#{$key}, map-get($variables, $key));
 }
 
+@function css-darken($key, $delta) {
+  @return hsl(var(--#{$key}-h), var(--#{$key}-s), calc(var(--#{$key}-l) - #{$delta}));
+}
+
 .elder-stepper {
   &__breadcrumbs {
     $spacing: 0.5rem;
 
     display: flex;
     align-items: center;
-
-    padding: $spacing * 2;
+    flex-wrap: wrap;
+    gap: 0.65rem;
 
     border-radius: GetVariable('border-radius');
-    background-color: white;
 
     .elder-stepper__breadcrumb {
-      $size: 24px;
+      $size: 23px;
 
       position: relative;
 
@@ -214,8 +218,8 @@ $variables: (
 
       &-icon {
         font-family: monospace;
-        font-size: 0.8em;
-        font-weight: bold;
+        font-size: 0.7em;
+
         line-height: $size;
 
         position: relative;
@@ -225,7 +229,7 @@ $variables: (
 
         width: $size;
         height: $size;
-        margin-right: $spacing;
+        margin-right: 0.5rem;
 
         text-align: center;
 
@@ -243,14 +247,15 @@ $variables: (
 
           opacity: 0.2;
           border-radius: 50%;
-          background-color: #bbb;
+          background-color: rgba(black, 0.2);
+          border: 1px solid rgba(black, 0.22);
         }
       }
 
       &-arrow {
         margin: 0 $spacing * 2;
 
-        opacity: 0.3;
+        opacity: 0.25;
       }
 
       &--active {
