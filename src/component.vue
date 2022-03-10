@@ -11,12 +11,12 @@
         <div
           :key="index"
           class="elder-stepper__breadcrumb"
-          :class="{ 'elder-stepper__breadcrumb--active': item.id === active.id }"
+          :class="{ 'elder-stepper__breadcrumb--active': isActive(item) }"
         >
           <slot
             name="breadcrumb"
             :item="item"
-            :is-active="item.id === active.id"
+            :is-active="isActive(item)"
             :index="index"
             :navigate="() => state.set(item.id)"
           >
@@ -41,13 +41,13 @@
     <div class="elder-stepper__component">
       <component
         v-for="item in value"
-        v-show="active.id === item.id"
+        v-show="isActive(item)"
         :is="item.component"
         :key="item.id"
         v-bind="{
           ...(item.props || {}),
           step: item,
-          isActive: active.id === item.id,
+          isActive: isActive(item),
         }"
         v-on="{
           ...(item.listeners || {}),
@@ -62,7 +62,7 @@
               item,
               next,
               prev,
-              isActive: active.id === item.id,
+              isActive: isActive(item),
             }"
           />
         </template>
@@ -74,7 +74,7 @@
               item,
               next,
               prev,
-              isActive: active.id === item.id,
+              isActive: isActive(item),
               ...scopedProps,
             }"
           />
@@ -130,16 +130,14 @@ export default {
   },
   watch: {
     stateHandler: {
-      handler(value) {
-        if (this.state) this.state.destroy()
-        this.state = new States[value](this)
-      },
+      handler: 'setState',
       immediate: true,
     },
+    value: 'setState',
   },
   computed: {
     meta() {
-      let index = this.value.findIndex((v) => v.id === this.active.id)
+      let index = this.value.findIndex((v) => this.isActive(v))
       return {
         prev: index > 0 ? this.value[index - 1] : null,
         active: this.active,
@@ -152,6 +150,9 @@ export default {
   },
   methods: {
     getIcon: iconBinding,
+    isActive(item) {
+      return this.active && this.active.id === item.id
+    },
     next() {
       if (!this.meta.next) return
       this.state.set(this.meta.next.id)
@@ -159,6 +160,10 @@ export default {
     prev() {
       if (!this.meta.prev) return
       this.state.set(this.meta.prev.id)
+    },
+    setState() {
+      if (this.state) this.state.destroy()
+      this.state = new States[this.stateHandler](this)
     },
   },
   components: {
