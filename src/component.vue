@@ -133,7 +133,10 @@ export default {
       handler: 'setState',
       immediate: true,
     },
-    value: 'setState',
+    value() {
+      if (!this.state) return
+      this.state.set()
+    },
   },
   computed: {
     meta() {
