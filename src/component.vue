@@ -250,7 +250,6 @@ $variables: (
         margin-right: 0.5rem;
 
         text-align: center;
-        border-radius: 50%;
 
         &:before {
           position: absolute;
