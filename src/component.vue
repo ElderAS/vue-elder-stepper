@@ -23,6 +23,7 @@
             <button
               type="button"
               class="elder-stepper__breadcrumb-button"
+              :disabled="item.disabled"
               @click="state.set(item.id)"
             >
               <span class="elder-stepper__breadcrumb-icon">
@@ -214,10 +215,22 @@ $variables: (
         border: none;
         outline: none;
         background-color: transparent;
+        
+        border-radius: GetVariable('border-radius');
 
         span:last-child {
           position: relative;
           top: -1px;
+        }
+
+        &:focus-visible {
+          outline: 2px solid black;
+          outline-offset: 4px;
+        }
+
+        &:disabled {
+          opacity: .5;
+          cursor: not-allowed;
         }
       }
 
@@ -237,6 +250,7 @@ $variables: (
         margin-right: 0.5rem;
 
         text-align: center;
+        border-radius: 50%;
 
         &:before {
           position: absolute;
