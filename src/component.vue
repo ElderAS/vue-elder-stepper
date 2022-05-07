@@ -39,7 +39,12 @@
 
     <slot name="before" />
 
-    <div class="elder-stepper__component">
+    <component
+      :is="transition ? 'transition-group' : 'div'"
+      :name="transition"
+      tag="div"
+      class="elder-stepper__component"
+    >
       <component
         v-for="item in value"
         v-show="isActive(item)"
@@ -81,7 +86,7 @@
           />
         </template>
       </component>
-    </div>
+    </component>
   </div>
 </template>
 
@@ -121,6 +126,7 @@ export default {
       type: String,
       default: 'step',
     },
+    transition: String,
     breadcrumbIcon: [String, Array],
   },
   data() {
@@ -215,7 +221,7 @@ $variables: (
         border: none;
         outline: none;
         background-color: transparent;
-        
+
         border-radius: GetVariable('border-radius');
 
         span:last-child {
@@ -229,7 +235,7 @@ $variables: (
         }
 
         &:disabled {
-          opacity: .5;
+          opacity: 0.5;
           cursor: not-allowed;
         }
       }
