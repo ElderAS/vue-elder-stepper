@@ -37,7 +37,14 @@
       </template>
     </div>
 
-    <slot name="before" />
+    <slot
+      name="before"
+      v-bind="{
+        meta,
+        next,
+        prev,
+      }"
+    />
 
     <component
       :is="transition ? 'transition-group' : 'div'"
@@ -87,6 +94,15 @@
         </template>
       </component>
     </component>
+
+    <slot
+      name="after"
+      v-bind="{
+        meta,
+        next,
+        prev,
+      }"
+    />
   </div>
 </template>
 
