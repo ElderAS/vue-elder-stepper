@@ -28,6 +28,7 @@
             >
               <span class="elder-stepper__breadcrumb-icon">
                 <Icon v-if="item.icon" :icon="item.icon" size="sm" />
+
                 <template v-else>{{ index + 1 }}</template>
               </span>
               <span>{{ item.label }}</span>
@@ -120,7 +121,7 @@
     icon,
   }
 */
-import Icon from '@kvass/vue2-icon/src/Legacy'
+import Icon from '@kvass/vue2-icon'
 import { iconBinding } from './utils'
 import { Options } from '../index'
 import States from './states'
