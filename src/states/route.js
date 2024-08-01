@@ -18,6 +18,7 @@ class StateHandler {
           ...this.cp.$route.params,
           [this.cp.stateKey]: id,
         },
+        query: this.cp.$route.query,
       })
   }
 
