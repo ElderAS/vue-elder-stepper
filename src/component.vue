@@ -2,7 +2,7 @@
   <div class="elder-stepper">
     <div class="elder-stepper__breadcrumbs">
       <template v-for="(item, index) in value">
-        <FontAwesomeIcon
+        <Icon
           v-if="index > 0"
           class="elder-stepper__breadcrumb-arrow"
           :icon="icon"
@@ -27,7 +27,8 @@
               @click="state.set(item.id)"
             >
               <span class="elder-stepper__breadcrumb-icon">
-                <FontAwesomeIcon v-if="item.icon" :icon="item.icon" size="sm" />
+                <Icon v-if="item.icon" :icon="item.icon" size="sm" />
+
                 <template v-else>{{ index + 1 }}</template>
               </span>
               <span>{{ item.label }}</span>
@@ -120,11 +121,10 @@
     icon,
   }
 */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Icon from '@kvass/vue2-icon'
 import { iconBinding } from './utils'
 import { Options } from '../index'
 import States from './states'
-import './icons'
 
 export default {
   props: {
@@ -190,7 +190,7 @@ export default {
     },
   },
   components: {
-    FontAwesomeIcon,
+    Icon,
   },
 }
 </script>
