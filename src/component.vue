@@ -156,6 +156,10 @@ export default {
       handler: 'setState',
       immediate: true,
     },
+    value: {
+      handler: 'setState',
+      immediate: true,
+    },
   },
   computed: {
     meta() {
@@ -187,9 +191,6 @@ export default {
       if (this.state) this.state.destroy()
       this.state = new States[this.stateHandler](this)
     },
-  },
-  created() {
-    this.setState()
   },
   components: {
     Icon,

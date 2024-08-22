@@ -14,7 +14,7 @@ class StateHandler {
     this.cp.active = this.cp.value.find((v) => v.id === id)
 
     if (this.cp.$route.params[this.cp.stateKey] !== id)
-      this.cp.$router[!this.cp.$route.params[this.cp.stateKey] ? 'replace' : 'replace']({
+      this.cp.$router[!this.cp.$route.params[this.cp.stateKey] ? 'replace' : 'push']({
         name: this.cp.$route.name,
         params: {
           ...this.cp.$route.params,
