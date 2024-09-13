@@ -1,6 +1,6 @@
 <template>
-  <div class="elder-stepper">
-    <div class="elder-stepper__breadcrumbs">
+  <div class="elder-stepper" :data-current-step="active.id">
+    <div v-if="breadcrumb" class="elder-stepper__breadcrumbs">
       <template v-for="(item, index) in value">
         <Icon
           v-if="index > 0"
@@ -62,11 +62,13 @@
           ...(item.props || {}),
           step: item,
           isActive: isActive(item),
+          ...$attrs,
         }"
         v-on="{
           ...(item.listeners || {}),
           next,
           prev,
+          ...$listeners,
         }"
       >
         <template #default>
@@ -143,6 +145,10 @@ export default {
       default: 'step',
     },
     transition: String,
+    breadcrumb: {
+      type: Boolean,
+      default: true,
+    },
     breadcrumbIcon: [String, Array],
   },
   data() {
